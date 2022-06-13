@@ -41,19 +41,19 @@ export default function TextForm(props) {
   
 
 
-
   const [text, setText] = useState("");
   
   // wrong way to change the state is text="hello";
   return (
     <>
       <div className="container">
-        <h5>{props.heading}</h5>
+        <h5 style={{color: props.mode==='dark'?'white':'black'}}>{props.heading}</h5>
         <div className="mb-3">
           <textarea
-            className="form-control"
+            className="form-control px:2"
             value={text}
             onChange={handleOnChange}
+            style={{backgroundColor: props.mode==='dark'?'#ada6a6':'white', color: props.mode==='dark'?'white':'black',cursor: 'url()'}}
             id="myBox"
             rows="8"
           ></textarea>
@@ -75,11 +75,11 @@ export default function TextForm(props) {
         </button>
       </div>
       <div className="container my-3">
-        <h5>Your text summary</h5>
-        <p>
+        <h5 style={{color: props.mode==='dark'?'white':'black'}}>Your text summary</h5>
+        <p style={{color: props.mode==='dark'?'white':'black'}}>
           {countWords(text)} words and {text.length} characters
         </p>
-        <p>{0.008 * text.split(" ").length} minutes to read</p>
+        <p style={{color: props.mode==='dark'?'white':'black'}}>{0.008 * text.split(" ").length} minutes to read</p>
       </div>
     </>
   );

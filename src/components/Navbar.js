@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Navbar(props) {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-md navbar-dark bg-dark"
+        className={`navbar navbar-expand-md navbar-${props.mode} bg-${props.mode}`}
         aria-label="Fourth navbar example"
       >
         <div className="container-fluid">
@@ -38,27 +37,31 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            <form role="search">
+            <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
               <input
-                className="form-control"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                onClick={props.togmode}
               />
-            </form>
+              <label className="form-check-label" htmlfor="flexSwitchCheckDefault">
+                Enable darkmode
+              </label>
+            </div>
           </div>
         </div>
       </nav>
     </div>
-  )
+  );
 }
-// used for checking errors of props 
+// used for checking errors of props
 Navbar.propTypes = {
-    title: PropTypes.string.isRequired,
-    aboutText: PropTypes.string,
-}
+  title: PropTypes.string.isRequired,
+  aboutText: PropTypes.string,
+};
 // default values of props
 Navbar.defaultProps = {
-    title: 'Set Title here',
-    aboutText: 'About',
-}
+  title: "Set Title here",
+  aboutText: "About",
+};
