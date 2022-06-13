@@ -1,11 +1,13 @@
+import "../App.css";
 import React from "react";
 import PropTypes from "prop-types";
+
 
 export default function Navbar(props) {
   return (
     <div>
       <nav
-        className={`navbar navbar-expand-md navbar-${props.mode} bg-${props.mode}`}
+        className={`navbar navbar-expand-md navbar-${props.mode.bgcol === 'white'? 'light':'dark'} bg-${props.mode.bgcol === 'white'? 'light':'dark'}`}
         aria-label="Fourth navbar example"
       >
         <div className="container-fluid">
@@ -37,7 +39,13 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+            <button className="btn1" onClick={()=> {props.toggleMode('white','black','black','white')}}></button>
+            <button className="btn2" onClick={()=> {props.toggleMode('#533549','white','#F6B042','black')}}></button>
+            <button className="btn3" onClick={()=> {props.toggleMode('#042743','white','green','white')}}></button>
+            <button className="btn4" onClick={()=> {props.toggleMode('#292826','white','#FCEDDA','#050505')}}></button>
+
+
+            {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -45,10 +53,10 @@ export default function Navbar(props) {
                 id="flexSwitchCheckDefault"
                 onClick={props.togmode}
               />
-              <label className="form-check-label" htmlfor="flexSwitchCheckDefault">
+              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
                 Enable darkmode
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>

@@ -37,6 +37,35 @@
   }
 }
 
-.blank{
-  color: red;
+.btn1{
+  background-color: white;
+  margin: 0 7px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px 10px;
+  display: inline-block;
+}
+.btn2{
+  background-color: #533549;
+  margin: 0 7px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px 10px;
+  display: inline-block;
+}
+.btn3{
+  background-color: #0b3d65;
+  margin: 0 7px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px 10px;
+  display: inline-block;
+}
+.btn4{
+  background-color: black;
+  margin: 0 7px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px 10px;
+  display: inline-block;
 }

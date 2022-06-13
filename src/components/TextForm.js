@@ -26,6 +26,7 @@ export default function TextForm(props) {
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to clipboard","success");
   };
   const handleSpeech = () => {
     utterance = new SpeechSynthesisUtterance(text);
@@ -47,39 +48,39 @@ export default function TextForm(props) {
   return (
     <>
       <div className="container">
-        <h5 style={{color: props.mode==='dark'?'white':'black'}}>{props.heading}</h5>
+        <h5 style={{color: props.mode.col}}>{props.heading}</h5>
         <div className="mb-3">
           <textarea
             className="form-control px:2"
             value={text}
             onChange={handleOnChange}
-            style={{backgroundColor: props.mode==='dark'?'#ada6a6':'white', color: props.mode==='dark'?'white':'black',cursor: 'url()'}}
+            style={{backgroundColor: props.mode.bgcol === 'white'?'white':'grey', color: props.mode.col === 'white'?'white':'black', cursor: 'url()'}}
             id="myBox"
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleUpClick}>
           Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowClick}>
+        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}}  onClick={handleLowClick}>
           Lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleClearClick}>
           Clear
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopy}>
+        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleCopy}>
           Copy
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleSpeech}>
+        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleSpeech}>
           Speech
         </button>
       </div>
       <div className="container my-3">
-        <h5 style={{color: props.mode==='dark'?'white':'black'}}>Your text summary</h5>
-        <p style={{color: props.mode==='dark'?'white':'black'}}>
+        <h5 style={{color: props.mode.col}}>Your text summary</h5>
+        <p style={{color: props.mode.col}}>
           {countWords(text)} words and {text.length} characters
         </p>
-        <p style={{color: props.mode==='dark'?'white':'black'}}>{0.008 * text.split(" ").length} minutes to read</p>
+        <p style={{color: props.mode.col}}>{0.008 * countWords(text)} minutes to read</p>
       </div>
     </>
   );
