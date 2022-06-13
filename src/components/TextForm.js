@@ -32,6 +32,12 @@ export default function TextForm(props) {
     console.log(utterance);
     speechSynthesis.speak(utterance);
   }
+  const countWords = (str)=> {
+    const arr = str.split(' ');
+  
+    return arr.filter(word => word !== '').length;
+  }
+  
 
 
 
@@ -70,7 +76,7 @@ export default function TextForm(props) {
       <div className="container my-3">
         <h5>Your text summary</h5>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {countWords(text)} words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} minutes to read</p>
       </div>
