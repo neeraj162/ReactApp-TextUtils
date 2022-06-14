@@ -1,37 +1,14 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-    
-  });
-
-  const [button, setBtntext] = useState("Enable Dark mode");
-
-  const toggleStyle = () => {
-    if (myStyle.color === "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black", 
-      });
-      setBtntext("Enable Light mode");
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setBtntext("Enable Dark mode");
-    }
-  };
+export default function About(props) {
 
   return (
-    <div className="container px-3 py-1" style={myStyle} id="featured-3">
-      <h3 className="pb-2 border-bottom">About Text Utils page</h3>
+    <div className="container px-3 py-1" style={{backgroundColor: props.mode.bgcol}} id="featured-3">
+      <h3 style={{color: props.mode.col}} className="pb-2 border-bottom">About Text Utils page</h3>
       <div className="row g-4 py-3 row-cols-1 row-cols-lg-1">
         <div className="feature col">
-          <h3>String Functions</h3>
-          <p>
+          <h3 style={{color: props.mode.col}}>String Functions</h3>
+          <p style={{color: props.mode.col}}>
             Apart from counting words and characters, our online editor can help
             you to improve word choice and writing style, and, optionally, help
             you to detect grammar mistakes and plagiarism. To check word count,
@@ -50,10 +27,7 @@ export default function About() {
           </p>
         </div>
       </div>
-      <hr />
-      <button onClick={toggleStyle} type="button" className="btn btn-primary">
-        {button}
-      </button>
+      <hr />  
     </div>
   );
 }

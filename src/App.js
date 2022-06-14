@@ -3,54 +3,58 @@ import "./App.css";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Alert from "./components/Alert";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
-  const [Mode, setMode] = useState({bgcol: 'white', col: 'black', btnbg: 'black', btncol: 'white'}); // state for dark mode
+  const [Mode, setMode] = useState({
+    bgcol: "white",
+    col: "black",
+    btnbg: "black",
+    btncol: "white",
+  }); // state for dark mode
   const [alert, setAlert] = useState(null); // state for alert
-  function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  const showAlert = (message, type)=> {
+
+  const showAlert = (message, type) => {
     setAlert({
       msg: message,
-      type: type
-    })
+      type: type,
+    });
     setTimeout(() => {
       setAlert(null);
     }, 1000);
-  }
-  const removeBodyClass = ()=> {
-    document.body.classList.remove('white');
-    document.body.classList.remove('#042743');
-    document.body.classList.remove('black');
-    document.body.classList.remove('green');
-  }
+  };
+  
+  const removeBodyClass = () => {
+    document.body.classList.remove("white");
+    document.body.classList.remove("#042743");
+    document.body.classList.remove("black");
+    document.body.classList.remove("green");
+  };
 
-
-  const toggleMode = (bgcol,col,btnbg,btncol)=> {
+  const toggleMode = (bgcol, col, btnbg, btncol) => {
     removeBodyClass();
 
     console.log(Mode);
     document.body.style.backgroundColor = bgcol;
-    showAlert(bgcol + " mode has been enabled","success"); 
+    // showAlert(bgcol + " mode has been enabled", "success");
 
-    setMode({bgcol: bgcol, col: col, btnbg: btnbg, btncol: btncol});
-    
-  }
+    setMode({ bgcol: bgcol, col: col, btnbg: btnbg, btncol: btncol });
+  };
   return (
     <>
-      <Navbar title="Text Utils" mode={Mode} toggleMode={toggleMode}/>
-      <Alert alert={alert}/>
-      <div className="container my-5">
-        
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={Mode}/>
-        {/* <About/> */}
-      </div>
-      
-      
-    </>
+      <Router>
+        <Navbar title="Text Utils" mode={Mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container my-5">
+          <Routes>
+            <Route exact path="/about" element={<About mode={Mode}/>}/>
+            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={Mode}/>}/>
+          </Routes>
+        </div>
+      </Router>
+    </> 
   );
 }
 

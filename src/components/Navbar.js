@@ -1,6 +1,7 @@
 import "../App.css";
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 
 export default function Navbar(props) {
@@ -11,9 +12,9 @@ export default function Navbar(props) {
         aria-label="Fourth navbar example"
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             {props.title}
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,20 +30,20 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarsExample04">
             <ul className="navbar-nav me-auto mb-2 mb-md-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <Link className="nav-link" to="/about">
                   {props.aboutText}
-                </a>
+                </Link>
               </li>
             </ul>
             <button className="btn1" onClick={()=> {props.toggleMode('white','black','black','white')}}></button>
             <button className="btn2" onClick={()=> {props.toggleMode('#533549','white','#F6B042','black')}}></button>
             <button className="btn3" onClick={()=> {props.toggleMode('#042743','white','green','white')}}></button>
-            <button className="btn4" onClick={()=> {props.toggleMode('#292826','white','#FCEDDA','#050505')}}></button>
+            <button className="btn4" onClick={()=> {props.toggleMode('#292826','white','#010B13','white')}}></button>
 
 
             {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
