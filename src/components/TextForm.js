@@ -23,9 +23,7 @@ export default function TextForm(props) {
     setText("");
   };
   const handleCopy = () => {
-    var text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Copied to clipboard","success");
   };
   const handleSpeech = () => {
@@ -35,9 +33,9 @@ export default function TextForm(props) {
     speechSynthesis.speak(utterance);
   }
   const countWords = (str)=> {
-    const arr = str.split(' ');
+    const arr = str.split(/\s+/);
   
-    return arr.filter(word => word !== '').length;
+    return arr.filter((word) => word.length !== 0).length;
   }
   
 
