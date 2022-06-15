@@ -40,10 +40,10 @@ export default function Navbar(props) {
                 </Link>
               </li>
             </ul>
-            <button className="btn1" onClick={()=> {props.toggleMode('white','black','black','white')}}></button>
-            <button className="btn2" onClick={()=> {props.toggleMode('#533549','white','#F6B042','black')}}></button>
-            <button className="btn3" onClick={()=> {props.toggleMode('#042743','white','green','white')}}></button>
-            <button className="btn4" onClick={()=> {props.toggleMode('#292826','white','#010B13','white')}}></button>
+            <button className="btn1" onClick={()=> {props.toggleMode('white','black','black','white','Light')}}></button>
+            <button className="btn2" onClick={()=> {props.toggleMode('#533549','white','#F6B042','black', 'Wild')}}></button>
+            <button className="btn3" onClick={()=> {props.toggleMode('#042743','white','green','white', 'Cool')}}></button>
+            <button className="btn4" onClick={()=> {props.toggleMode('#292826','white','#010B13','white', 'Dark')}}></button>
 
 
             {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>

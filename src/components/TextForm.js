@@ -48,30 +48,30 @@ export default function TextForm(props) {
   return (
     <>
       <div className="container">
-        <h5 style={{color: props.mode.col}}>{props.heading}</h5>
+        <h3 style={{color: props.mode.col}}>{props.heading}</h3>
         <div className="mb-3">
           <textarea
             className="form-control px:2"
             value={text}
             onChange={handleOnChange}
-            style={{backgroundColor: props.mode.bgcol === 'white'?'white':'grey', color: props.mode.col === 'white'?'white':'black', cursor: 'url()'}}
+            style={{backgroundColor: props.mode.bgcol === 'white'?'white':'lightgrey', color: props.mode.col === 'white'?'black':'black', cursor: 'url()'}}
             id="myBox"
             rows="8"
           ></textarea>
         </div>
-        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleUpClick}>
+        <button disabled={text.length===0} className="btn mx-1 my-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleUpClick}>
           Uppercase
         </button>
-        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}}  onClick={handleLowClick}>
+        <button disabled={text.length===0} className="btn mx-1 my-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}}  onClick={handleLowClick}>
           Lowercase
         </button>
-        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleClearClick}>
+        <button disabled={text.length===0} className="btn mx-1 my-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleClearClick}>
           Clear
         </button>
-        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleCopy}>
+        <button disabled={text.length===0} className="btn mx-1 my-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleCopy}>
           Copy
         </button>
-        <button className="btn mx-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleSpeech}>
+        <button disabled={text.length===0} className="btn mx-1 my-1" style={{backgroundColor: props.mode.btnbg,  color: props.mode.btncol}} onClick={handleSpeech}>
           Speech
         </button>
       </div>

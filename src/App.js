@@ -13,6 +13,7 @@ function App() {
     col: "black",
     btnbg: "black",
     btncol: "white",
+    alertcol: "light",
   }); // state for dark mode
   const [alert, setAlert] = useState(null); // state for alert
 
@@ -23,7 +24,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null);
-    }, 1000);
+    }, 1500);
   };
   
   const removeBodyClass = () => {
@@ -33,14 +34,15 @@ function App() {
     document.body.classList.remove("green");
   };
 
-  const toggleMode = (bgcol, col, btnbg, btncol) => {
+  const toggleMode = (bgcol, col, btnbg, btncol,alertcol) => {
     removeBodyClass();
 
     console.log(Mode);
     document.body.style.backgroundColor = bgcol;
-    // showAlert(bgcol + " mode has been enabled", "success");
+    if(bgcol !== Mode.bgcol)
+      showAlert(alertcol + " mode has been enabled", "success");
 
-    setMode({ bgcol: bgcol, col: col, btnbg: btnbg, btncol: btncol });
+    setMode({ bgcol: bgcol, col: col, btnbg: btnbg, btncol: btncol,alertcol: alertcol});
   };
   return (
     <>
